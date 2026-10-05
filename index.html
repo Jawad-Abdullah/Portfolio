@@ -632,12 +632,52 @@ footer{
 
 /* ===================== RESPONSIVE ===================== */
 @media(max-width:1000px){
-  .hero-inner{grid-template-columns:1fr}
-  .hero-photo-side{display:none}
+  .hero-inner{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+    text-align:center;
+    gap:50px;
+  }
+  /* Show photo on mobile — reorder so photo comes first */
+  .hero-photo-side{
+    display:flex;
+    order:-1;
+    height:360px;
+    width:100%;
+    justify-content:center;
+    align-items:center;
+  }
+  .hero-left{order:1}
+  /* Make photo smaller on mobile */
+  .photo-bg-glow{width:280px;height:280px}
+  .photo-ring-outer{width:260px;height:260px}
+  .photo-ring-dashed{width:278px;height:278px}
+  .orbit-container{width:270px;height:270px}
+  .photo-frame{width:220px;height:265px}
+  /* Hide side badges on very small space */
+  .badge-avail{display:none}
+  .badge-loc{bottom:10px;left:0px;font-size:12px;padding:8px 12px}
+  .badge-role{top:10px;right:0px;font-size:12px;padding:8px 12px}
+  /* Center hero text elements */
+  .hero-tag{justify-content:center}
+  .hero-role{justify-content:center}
+  .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-stats{justify-content:center}
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .nav-links,.nav-hire{display:none}
   .hamburger{display:flex}
+}
+@media(max-width:480px){
+  .hero-photo-side{height:300px}
+  .photo-bg-glow{width:220px;height:220px}
+  .photo-ring-outer{width:210px;height:210px}
+  .photo-ring-dashed{width:228px;height:228px}
+  .orbit-container{width:220px;height:220px}
+  .photo-frame{width:180px;height:220px;border-radius:40% 60% 60% 40% / 50% 50% 60% 40%}
+  .badge-loc{font-size:11px;padding:6px 10px}
+  .badge-role{font-size:11px;padding:6px 10px}
 }
 @media(max-width:600px){
   .section{padding:70px 20px}
