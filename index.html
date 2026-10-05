@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 24px;
 @keyframes bigDrift{0%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-48%,-52%) scale(1.04)}}
 
 .hero-wrap{max-width:1200px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1fr 400px;gap:60px;
+  display:grid;grid-template-columns:1fr 460px;gap:50px;
   align-items:center;position:relative;z-index:2}
 
 /* ---------- hero text ---------- */
@@ -140,7 +140,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 24px;
 
 /* ---------- hero photo ---------- */
 .hphoto{position:relative;display:flex;align-items:center;justify-content:center;
-  height:480px;animation:fsUp 1s .3s ease both}
+  height:500px;width:100%;animation:fsUp 1s .3s ease both}
 /* glow blob */
 .ph-glow{position:absolute;width:380px;height:380px;border-radius:50%;
   background:radial-gradient(circle,rgba(124,58,237,.28) 0%,rgba(6,182,212,.12) 50%,transparent 70%);
@@ -488,6 +488,25 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 .mclose{position:absolute;top:24px;right:24px;background:none;border:none;
   color:var(--text);font-size:26px;cursor:pointer}
 
+/* ===== MOBILE CV BANNER (only on small screens) ===== */
+.cv-mobile-bar{display:none}
+@media(max-width:1000px){
+  .cv-mobile-bar{
+    display:flex;
+    align-items:center;justify-content:center;gap:12px;
+    padding:12px 20px;
+    background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(6,182,212,.12));
+    border-bottom:1.5px solid rgba(16,185,129,.4);
+    position:relative;z-index:3;
+    text-decoration:none;color:var(--green);font-weight:700;font-size:14px;
+    transition:all .3s;
+  }
+  .cv-mobile-bar:hover{background:linear-gradient(135deg,rgba(16,185,129,.28),rgba(6,182,212,.2))}
+  .cv-mobile-bar i{font-size:18px}
+  .cv-mobile-bar .cv-bar-text{display:flex;flex-direction:column;line-height:1.3}
+  .cv-mobile-bar .cv-bar-text span{font-size:12px;color:var(--muted);font-weight:400}
+}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
   .hero-wrap{grid-template-columns:1fr;gap:0}
@@ -512,12 +531,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);
   .htag{justify-content:center}
   .hrole{justify-content:center}
   .hdesc{margin:0 auto 36px}
-  .hbtns{justify-content:center}
+  .hbtns{justify-content:center;flex-direction:column;align-items:center;gap:12px}
+  .hbtns a{width:100%;max-width:300px;justify-content:center}
   .hstats{justify-content:center}
   .hero-big-txt{display:none}
   .ag{grid-template-columns:1fr}
   .cgrid{grid-template-columns:1fr}
   .cyber-intro{grid-template-columns:1fr}
+  /* hide nav links but keep hamburger */
   .nl,.hire,.nav-cv{display:none}
   .ham{display:flex}
 }
@@ -537,10 +558,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);
   .ph-dash{width:220px;height:220px}
   .ph-orbit{width:210px;height:210px}
   .hphoto{height:280px}
+  .hbtns a{max-width:260px;font-size:13px;padding:12px 24px}
 }
 @media(max-width:380px){
   .cyber-grid{grid-template-columns:1fr}
   .ph-pic{width:150px;height:190px}
+  .hbtns a{max-width:240px}
 }
 </style>
 </head>
@@ -566,6 +589,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);
     <div class="ham" id="ham" onclick="tmob()"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<!-- MOBILE CV BAR — shows only on phones/tablets -->
+<a href="Jawad_Abdullah_Khan_Updated_CV.pdf" download="Jawad_Abdullah_Khan_CV.pdf" class="cv-mobile-bar">
+  <i class="fas fa-file-pdf" style="color:#ef4444"></i>
+  <div class="cv-bar-text">
+    <strong>📄 Download My CV</strong>
+    <span>Jawad Abdullah Khan — Cyber Security Intern</span>
+  </div>
+  <i class="fas fa-download" style="margin-left:auto"></i>
+</a>
 <div class="mnav" id="mnav">
   <button class="mclose" onclick="tmob()"><i class="fas fa-times"></i></button>
   <a href="#about"      onclick="tmob()">About</a>
@@ -583,7 +616,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-big-txt">DEVELOPER</div>
+  <div class="hero-big-txt">CYBERSECURITY</div>
   <div class="hero-wrap">
 
     <!-- PHOTO — shown first on mobile via order:-1 -->
@@ -604,7 +637,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       <div class="ph-pic" id="ph-pic"></div>
       <!-- badges -->
       <div class="pb pb-loc"><i class="fas fa-map-marker-alt" style="color:var(--pink)"></i>Wah, Pakistan</div>
-      <div class="pb pb-role"><i class="fas fa-shield-alt" style="color:var(--cyan)"></i>Cyber &amp; Dev</div>
+      <div class="pb pb-role"><i class="fas fa-shield-alt" style="color:var(--cyan)"></i>Cyber Security Intern</div>
       <div class="pb pb-sec"><span style="color:var(--green)">⚡</span>Available</div>
     </div>
 
@@ -612,11 +645,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);
     <div class="hleft">
       <div class="htag"><span class="dot-live"></span>Open to opportunities</div>
       <h1 class="htitle"><span class="l1">Hi, I'm</span><br><span class="l2">Jawad Abdullah</span></h1>
-      <div class="hrole">I build&nbsp;<span class="typed" id="typed"></span><span class="cblink"></span></div>
+      <div class="hrole">I do&nbsp;<span class="typed" id="typed"></span><span class="cblink"></span></div>
       <p class="hdesc">
-        <strong>Cyber Security Intern & Developer</strong> at Capregsoft Pvt Ltd —
-        crafting secure web, mobile &amp; desktop solutions while mastering penetration testing
-        and vulnerability assessment.
+        <strong>Cyber Security Intern</strong> at
+        <strong>Capregsoft Pvt Ltd, Islamabad</strong> —
+        hands-on penetration testing, network recon, web app security
+        &amp; vulnerability assessment.
       </p>
       <div class="hbtns">
         <a href="#projects" class="bg"><i class="fas fa-rocket"></i>View Projects</a>
@@ -653,10 +687,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);
         </div>
       </div>
       <div class="traits rv r">
-        <div class="tcard"><div class="tico" style="background:rgba(239,68,68,.12)">🛡️</div><div><h3>Security Mindset</h3><p>Hands-on with network recon, web app pentesting, SQL injection, and vulnerability scanning using industry tools.</p></div></div>
-        <div class="tcard"><div class="tico" style="background:rgba(39,182,243,.12)">📱</div><div><h3>Mobile Developer</h3><p>Building cross-platform Flutter apps with Dart — smooth UIs, Firebase integration, and clean architecture.</p></div></div>
-        <div class="tcard"><div class="tico" style="background:rgba(248,152,32,.12)">☕</div><div><h3>Java & C++ Engineer</h3><p>GUI desktop apps, TCP socket systems, multi-threading, and OOP design patterns.</p></div></div>
-        <div class="tcard"><div class="tico" style="background:rgba(16,185,129,.12)">🎓</div><div><h3>Continuous Learner</h3><p>Always expanding — currently deepening skills in web app pentesting, network security, and Flutter state management.</p></div></div>
+        <div class="tcard"><div class="tico" style="background:rgba(239,68,68,.12)">🛡️</div><div><h3>Penetration Tester</h3><p>Hands-on with network recon, web app pentesting, SQL injection, and vulnerability scanning using industry tools.</p></div></div>
+        <div class="tcard"><div class="tico" style="background:rgba(124,58,237,.12)">�</div><div><h3>Vulnerability Assessor</h3><p>Scanning and enumerating systems with Nmap, Nikto, Burp Suite, OWASP ZAP and delivering detailed security reports.</p></div></div>
+        <div class="tcard"><div class="tico" style="background:rgba(6,182,212,.12)">🐍</div><div><h3>Python Scripter</h3><p>Writing automation scripts for security tasks, custom scanners, and rapid exploitation tooling using Python.</p></div></div>
+        <div class="tcard"><div class="tico" style="background:rgba(16,185,129,.12)">🎓</div><div><h3>Continuous Learner</h3><p>Always expanding — deepening skills in web app pentesting, network security, SQLMap, and Burp Suite Pro.</p></div></div>
       </div>
     </div>
   </div>
@@ -860,16 +894,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);
       </div>
       <div class="tli rv"><div class="tld"></div>
         <div class="tlc">
-          <div class="tltop"><div><div class="tlrole">Software Developer</div><div class="tlco">Capregsoft Pvt Ltd</div></div><span class="tlper">2026 – Present</span></div>
-          <div class="tldesc">Developing cross-platform mobile apps with Flutter/Dart, building Java GUI desktop applications, and contributing to web projects. Collaborating in an Agile team delivering quality software.</div>
-          <div class="tltech"><span class="tch">Flutter</span><span class="tch">Java</span><span class="tch">C++</span><span class="tch">HTML/CSS</span><span class="tch">Git</span></div>
-        </div>
-      </div>
-      <div class="tli rv"><div class="tld"></div>
-        <div class="tlc">
-          <div class="tltop"><div><div class="tlrole">Freelance Developer</div><div class="tlco">Independent Projects</div></div><span class="tlper">2025 – 2026</span></div>
-          <div class="tldesc">Built 11+ open-source projects spanning Java GUI apps, Flutter mobile apps, C++ systems, and web applications. Established a strong GitHub portfolio across multiple domains.</div>
-          <div class="tltech"><span class="tch">Java Swing</span><span class="tch">Flutter</span><span class="tch">C++</span><span class="tch">Web Dev</span></div>
+          <div class="tltop"><div><div class="tlrole">Security Researcher (Self-Study)</div><div class="tlco">Independent Practice</div></div><span class="tlper">2025 – 2026</span></div>
+          <div class="tldesc">Self-directed study and practice in ethical hacking — completing labs, CTF challenges, and hands-on exercises covering network security, web vulnerabilities, and exploitation techniques prior to professional internship.</div>
+          <div class="tltech"><span class="tch">Kali Linux</span><span class="tch">OWASP Top 10</span><span class="tch">CTF Labs</span><span class="tch">Python</span><span class="tch">Network Security</span></div>
         </div>
       </div>
     </div>
@@ -923,7 +950,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);
 <!-- FOOTER -->
 <footer>
   <div class="flogo">&lt;Jawad/&gt;</div>
-  <div class="ftagline">Sardar Jawad Abdullah Khan — Cyber Security Intern & Developer @ Capregsoft Pvt Ltd</div>
+  <div class="ftagline">Sardar Jawad Abdullah Khan — Cyber Security Intern @ Capregsoft Pvt Ltd, Islamabad</div>
   <div class="fsocs">
     <a href="https://github.com/Jawad-Abdullah" target="_blank" class="fsoc"><i class="fab fa-github"></i></a>
     <a href="https://linkedin.com/in/sardar-jawad-abdullah-khan-73ba4a394" target="_blank" class="fsoc"><i class="fab fa-linkedin-in"></i></a>
@@ -995,7 +1022,7 @@ document.addEventListener('mousemove', e => {
 })();
 
 /* ── Typed ── */
-const phrases=['Web Applications','Secure Systems','Mobile Apps','Flutter UIs','Java Solutions','C++ Programs'];
+const phrases=['Penetration Testing','Web App Security','Network Recon','Vulnerability Assessment','SQL Injection Testing','Security Audits','Ethical Hacking'];
 let pi=0,ci=0,dl=false;
 const tel=document.getElementById('typed');
 function tp(){
